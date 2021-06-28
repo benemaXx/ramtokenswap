@@ -24,11 +24,11 @@
                     "type": "uint8"
                 },
                 {
-                    "name": "uxRAMask",
+                    "name": "askPriceK",
                     "type": "uint64"
                 },
                 {
-                    "name": "uxRAMbid",
+                    "name": "bidPriceK",
                     "type": "uint64"
                 }
             ]
@@ -38,11 +38,11 @@
             "base": "",
             "fields": [
                 {
-                    "name": "uxRAMask",
+                    "name": "askPriceK",
                     "type": "uint64"
                 },
                 {
-                    "name": "uxRAMbid",
+                    "name": "bidPriceK",
                     "type": "uint64"
                 }
             ]
@@ -60,11 +60,11 @@
                     "type": "uint8"
                 },
                 {
-                    "name": "uxRAMask",
+                    "name": "askPriceK",
                     "type": "uint64"
                 },
                 {
-                    "name": "uxRAMbid",
+                    "name": "bidPriceK",
                     "type": "uint64"
                 }
             ]
