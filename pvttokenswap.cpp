@@ -49,8 +49,8 @@ void pvttokenswap::ontransfer(name from, name to, asset quantity, string memo) {
         
         action(
             permission_level{_self, "transfer"_n},
-            "pvttokentest"_n, "transfer"_n,
-            std::make_tuple(_self, from, bought, string("transfer from pvttokenswap"))
+            "pvt.privato"_n, "transfer"_n,
+            std::make_tuple(_self, from, bought, string("transfer from pvt.privato"))
         ).send();
      
     } 
