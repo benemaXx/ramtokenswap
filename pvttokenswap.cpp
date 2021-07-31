@@ -13,7 +13,7 @@ void pvttokenswap::onpvttransfer(name from, name to, asset quantity, string memo
 
     if (quantity.symbol == PVT && from != cfg_itr.owner && from != _self && to == _self) {
         check(quantity.amount>100, "minimum 0.0100 PVT per swap");
-        check(cfg_itr.blockNewSwaps != 1, "swap functionality is currently disabled");
+        check(cfg_itr.blockNewSwaps != 1 && cfg_itr.blockNewSwaps != 2, "sell functionality is currently disabled");
         
         asset bought(0, UTX);
         auto xchange = cfg_itr.bidPriceK;    //GET THE EXCHANGE RATE BETWEEN UTX AND PVT
@@ -40,7 +40,7 @@ void pvttokenswap::ontransfer(name from, name to, asset quantity, string memo) {
     if(quantity.symbol == UTX && from != cfg_itr.owner && from != _self && to == _self) {
 
         check(quantity.amount>100, "minimum 0.0100 UTX per swap");
-        check(cfg_itr.blockNewSwaps != 1, "swap functionality is currently disabled");
+        check(cfg_itr.blockNewSwaps != 1 && cfg_itr.blockNewSwaps != 3, "buy functionality is currently disabled");
         
         asset bought(0, PVT);
         auto xchange = cfg_itr.askPriceK;    //GET THE EXCHANGE RATE BETWEEN UTX AND PVT
@@ -88,7 +88,7 @@ void pvttokenswap::setup(name ownername, uint8_t blockNewSwaps, uint64_t askPric
     else {
         auto& cfg_itr = _config.get(1);
         require_auth(cfg_itr.owner);
-        // if uxRAMxchange == 0 clear the existing _config table
+        // if bidPriceK == 0 || askPriceK == 0 clear the existing _config table
         if (bidPriceK == 0 || askPriceK == 0) {
             auto rem_itr = _config.find(1);
             if (rem_itr != _config.end()) {

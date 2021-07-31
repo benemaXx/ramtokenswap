@@ -1,5 +1,5 @@
-# pvttokenswap contract
-Swap UTX vs. PVT tokens 
+# pvttokenshop contract
+Buy and sell PVT tokens 
 
 Utility smart contract for UX Network
 
@@ -8,8 +8,8 @@ Utility smart contract for UX Network
 
 After the contract is deployed, call the **setup** action with following parameters:
 
-- **ownername:** [enter the owner account] Sets the owner's account which will be allowed to change bid/ask prices for the contract, turn swap mode on/off or send additional UTX or PVT tokens to the contract when needed. 
-- **blockNewSwaps:** [enter 0 or 1] Turns swap mode on/off. If set to 1, the swaps will be temporarily halted/blocked.
+- **ownername:** [enter the owner account] Sets the owner's account which will be allowed to change bid/ask prices for the contract, turn shop mode on/off or send additional UTX or PVT tokens to the contract when needed. 
+- **blockNewSwaps:** [enter 0, 1, 2 or 3] Turns swap mode on/off. If set to 1, all swaps will be temporarily halted/blocked. If set to 2, the PVT->UTX swaps will be temporarily halted/blocked. If set to 3, the UTX->PVT swaps will be temporarily halted/blocked. 
 - **askPriceK:** [enter ask price for PVT in UTX * 1'000]
 - **bidPriceK:** [enter bid price for PVT in UTX * 1'000]
 
@@ -94,7 +94,7 @@ cleos -u http://explorer.uxnetwork.io push transaction '{
         "from": "[USER_ACCOUNT]",
         "to": "[SWAP_CONTRACT]",
         "quantity": "10.0000 PVT",
-        "memo": "swap 10 PVT for UTX"
+        "memo": "sell 10 PVT for UTX"
       },
       "authorization": [
         {

@@ -18,7 +18,7 @@ private:
         uint64_t  id;
         uint64_t version=0;
         name owner;
-        uint8_t blockNewSwaps = 0;
+        uint8_t blockNewSwaps = 0; //0: all swaps enabled; 1: PVT->UTX only; 2: UTX->PVT only;
         uint64_t askPriceK;
         uint64_t bidPriceK;
         auto primary_key() const { return id; }
@@ -42,7 +42,7 @@ public:
  [[eosio::on_notify("eosio.token::transfer")]]
  void ontransfer(name from, name to, asset quantity, string memo); 
 
- [[eosio::on_notify("uxpvttkntest::transfer")]]
+ [[eosio::on_notify("pvttokentest::transfer")]]
  void onpvttransfer(name from, name to, asset quantity, string memo);    
 
     
