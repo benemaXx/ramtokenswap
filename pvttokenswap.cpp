@@ -12,7 +12,7 @@ void pvttokenswap::onpvttransfer(name from, name to, asset quantity, string memo
     check(quantity.amount>0, "only positive quantity allowed");
 
     if (quantity.symbol == PVT && from != cfg_itr.owner && from != _self && to == _self) {
-        check(quantity.amount>100, "minimum 0.0100 PVT per swap");
+        check(quantity.amount>100, "minimum 0.0100 PVT");
         check(cfg_itr.blockNewSwaps != 1 && cfg_itr.blockNewSwaps != 2, "sell functionality is currently disabled");
         
         asset bought(0, UTX);
@@ -22,7 +22,7 @@ void pvttokenswap::onpvttransfer(name from, name to, asset quantity, string memo
         action(
             permission_level{_self, "transfer"_n},
             "eosio.token"_n, "transfer"_n,
-            std::make_tuple(_self, from, bought, string("transfer from pvttokenswap"))
+            std::make_tuple(_self, from, bought, string("transfer from pvt.privato"))
         ).send();
     
     }
@@ -39,7 +39,7 @@ void pvttokenswap::ontransfer(name from, name to, asset quantity, string memo) {
 
     if(quantity.symbol == UTX && from != cfg_itr.owner && from != _self && to == _self) {
 
-        check(quantity.amount>100, "minimum 0.0100 UTX per swap");
+        check(quantity.amount>100, "minimum 0.0100 UTX");
         check(cfg_itr.blockNewSwaps != 1 && cfg_itr.blockNewSwaps != 3, "buy functionality is currently disabled");
         
         asset bought(0, PVT);
